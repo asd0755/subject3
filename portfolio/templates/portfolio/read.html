@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Portfolio Home</h1>
+
+<button type="button" class="btn btn-outline-primary"><a href="{% url 'createp' %}" style="text-decoration:none !important;">글쓰기</a></button>
+<hr>
+
+    <div class="port">
+    {% for portfolio in portfolios %}
+        <h2><a class="item" href="{% url 'detailp' portfolio.id %}">{{ portfolio.title }}</a></h2>
+        <h6>{{portfolio.pub_date_pretty}}</h6><br>
+        <p>{{ portfolio.summary }}<a href="{% url 'detailp' portfolio.id %}">.... more</a> </p>
+        <button type="button" class="btn btn-outline-primary"><a href="{% url 'updatep' portfolio.id %}" style="text-decoration:none !important;">수정</a></button>
+        <button type="button" class="btn btn-outline-primary"><a href="{% url 'deletep' portfolio.id %}" style="text-decoration:none !important;">삭제</a></button>  
+        <br><br>
+        <img class="card-img-top" src="{{ portfolio.image.url }}" style="height:300px; width:300px;">
+        <hr>
+    {% endfor %}
+    </div>
+
+{% endblock %}

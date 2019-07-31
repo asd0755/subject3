@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <h1>{{ portfolio.title }}</h1>
+        <p>{{ portfolio.pub_date }}</p>
+        {{portfolio.body}}
+        <img class="card-img-top" src="{{ portfolio.image.url }}">
+        <a href="{% url 'readp' %}">Home</a>
+
+
+{% endblock %}

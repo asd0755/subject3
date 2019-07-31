@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+        <h1>Blog</h1>
+        <h1>{{ blog.title }}</h1>
+        <p>{{ blog.pub_date }}</p><br>
+        {{blog.body}}
+        
+        <br><br><button type="button" class="btn btn-outline-primary"><a href="{% url 'read' %}" style="text-decoration:none !important;">Home</a></button>
+        
+
+{% endblock %}

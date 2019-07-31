@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Blog Home</h1>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'create' %}" style="text-decoration:none !important;">글쓰기</a></button>
+    <hr> 
+
+    {% for blog in blogs %}
+    
+    <a class="item" href="{% url 'detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+        <h6>{{blog.pub_date_pretty}}</h6><br>
+        <p>{{ blog.summary }}<a class="item2" href="{% url 'detail' blog.id %}">.... more</a> </p>
+        
+        <button type="button" class="btn btn-outline-primary"><a href="{% url 'update' blog.id %}" style="text-decoration:none !important;">수정</a></button>
+        <button type="button" class="btn btn-outline-primary"><a href="{% url 'delete' blog.id %}" style="text-decoration:none !important;">삭제</a></button>  <!--pk 정보 추가 주의!-->                                        <!--밑줄긋기-->
+        <hr>
+    {% endfor %}
+{% endblock %}
